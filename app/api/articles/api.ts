@@ -9,6 +9,7 @@ export const getArticles = async (): Promise<ArticleType[]> => {
         const data = await response.json();
         return data.data;
     } catch (error) {
+        console.error("Error fetching articles:", error);
         throw new Error('Failed to fetch articles');
     }
 };

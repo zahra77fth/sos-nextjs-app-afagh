@@ -8,7 +8,7 @@ export async function GET() {
         return NextResponse.json({ data: articles }, { status: 200 });
     } catch (error) {
         return NextResponse.json(
-            { error: 'Failed to fetch articles' },
+            { error: "Failed to fetch articles", details: error },
             { status: 500 }
         );
     }

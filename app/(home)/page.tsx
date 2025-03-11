@@ -18,6 +18,7 @@ const Home = () => {
                 const data = await getArticles();
                 setArticles(data);
             } catch (err) {
+                console.error("Error fetching articles:", err);
                 setError("Failed to load articles. Please try again later.");
             } finally {
                 setLoading(false);
