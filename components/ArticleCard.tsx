@@ -87,7 +87,7 @@ const ArticleCard = ({ article = {} as ArticleType }) => {
                     {article.summary}
                 </Typography>
 
-                <Link href={`/articles/${article.id}`} passHref>
+                <Link href={`/${article.id}`} passHref>
                     <Button
                         variant="outlined"
                         sx={{

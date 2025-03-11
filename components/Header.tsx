@@ -26,7 +26,7 @@ const Header = () => {
                         <NavLink href="/">صفحه اصلی</NavLink>
                         <NavLink href="/martyrs">شعبه‌های ما</NavLink>
                         <NavLink href="/health-centers">مراکز خدمات درمانی</NavLink>
-                        <NavLink href="/todo">To-Do List</NavLink>
+                        <NavLink href="/todo-list">To-Do List</NavLink>
                         <NavLink href="/faq">سوالات متداول</NavLink>
                     </nav>
                 </div>
