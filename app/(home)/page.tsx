@@ -1,11 +1,10 @@
 "use client";
+import { useEffect, useState } from "react";
 import { getArticles } from "@/app/api/articles/api";
 import { ArticleType } from "@/types/article";
-import ArticleCard from "@/components/ArticleCard"
+import ArticleCard from "@/components/ArticleCard";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Skeleton } from "@/components/shared/Skeleton";
-import { ErrorMessage } from "@/components/shared/ErrorMessage";
+import { Skeleton, Container, Typography, Card, CardContent, Button, Box } from "@mui/material";
 
 const Home = () => {
     const [articles, setArticles] = useState<ArticleType[]>([]);
@@ -30,48 +29,51 @@ const Home = () => {
 
     if (loading) {
         return (
-            <div className="max-w-7xl mx-auto p-6 mt-4">
-                <h1 className="text-3xl font-bold text-gray-900 mb-6">مقالات</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {[...Array(8)].map((_, index) => (
-                        <div key={index} className="bg-white shadow-md rounded-lg border border-gray-200">
-                            <Skeleton className="h-48 w-full rounded-t-lg" />
-                            <div className="p-4">
-                                <Skeleton className="h-6 w-3/4 mb-4" />
-                                <Skeleton className="h-4 w-full mb-2" />
-                                <Skeleton className="h-4 w-2/3 mb-4" />
-                                <Skeleton className="h-10 w-24" />
-                            </div>
-                        </div>
+            <Container sx={{ minWidth: "100%", mx:1, mt: 4 }}>
+                <Typography variant="h4" fontWeight="bold" gutterBottom>
+                    مقاله ها
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
+                    {[...Array(4)].map((_, index) => (
+                        <Card key={index} sx={{ width: 380 }}>
+                            <Skeleton variant="rectangular" height={180} />
+                            <CardContent>
+                                <Skeleton height={30} width="80%" />
+                                <Skeleton height={20} width="100%" sx={{ my: 1 }} />
+                                <Skeleton height={20} width="60%" />
+                                <Skeleton height={40} width={80} sx={{ mt: 2 }} />
+                            </CardContent>
+                        </Card>
                     ))}
-                </div>
-            </div>
+                </Box>
+            </Container>
         );
     }
 
     if (error) {
         return (
-            <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg border border-gray-200 mt-4">
-                <ErrorMessage message={error} />
-                <Link
-                    href="/"
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                >
+            <Container maxWidth="sm" sx={{ mt: 4, p: 3, textAlign: "center" }}>
+                <Typography color="error" variant="h6" gutterBottom>
+                    {error}
+                </Typography>
+                <Button component={Link} href="/" variant="contained" color="primary">
                     بازگشت به مقالات
-                </Link>
-            </div>
+                </Button>
+            </Container>
         );
     }
 
     return (
-        <main className="mx-auto p-6 mt-4">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6">مقالات</h1>
-            <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <Container sx={{ minWidth: "100%", mx:1, mt: 4 }}>
+            <Typography variant="h4" fontWeight="bold" gutterBottom>
+                مقاله ها
+            </Typography>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2, justifyContent: "center" }}>
                 {articles.map((article) => (
                     <ArticleCard key={article.id} article={article} />
                 ))}
-            </div>
-        </main>
+            </Box>
+        </Container>
     );
 };
 

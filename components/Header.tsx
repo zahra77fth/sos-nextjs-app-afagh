@@ -17,31 +17,32 @@ const Header = () => {
     return (
         <header className="bg-white shadow-md">
             <div className="container mx-auto flex justify-between items-center p-4">
-                <div className="flex-1 flex items-center space-x-6">
+                <div className="flex-1 flex items-center space-x-2 md:space-x-6">
+                    <div className="md:hidden p-2">
+                        <IconButton onClick={toggleMenu}>
+                            <Menu size={24} className="text-[#1158A7]"/>
+                        </IconButton>
+                    </div>
+
                     <Link href="/">
-                        <Image src="/sos.svg" alt="صفحه اصلی" width={198} height={40} />
+                        <Image src="/sos.svg" alt="صفحه اصلی" width={198} height={40}/>
                     </Link>
 
                     <nav className="hidden md:flex flex-1 justify-between pl-6">
                         <NavLink href="/">صفحه اصلی</NavLink>
-                        <NavLink href="/martyrs">شعبه‌های ما</NavLink>
-                        <NavLink href="/health-centers">مراکز خدمات درمانی</NavLink>
                         <NavLink href="/todo-list">To-Do List</NavLink>
+                        <NavLink href="/health-centers">مراکز خدمات درمانی</NavLink>
+                        <NavLink href="/martyrs">شعبه‌های ما</NavLink>
                         <NavLink href="/faq">سوالات متداول</NavLink>
                     </nav>
                 </div>
 
                 <Link
                     href="/login"
-                    className="hidden md:block bg-[#1158A7] text-white px-4 py-2 rounded hover:bg-blue-600"
+                    className="block bg-[#1158A7] text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                     ورود و فعالسازی
                 </Link>
-                <div className="md:hidden p-2">
-                    <IconButton onClick={toggleMenu}>
-                        <Menu size={28} className="text-[#1158A7]" />
-                    </IconButton>
-                </div>
 
                 <Drawer anchor="right" open={isOpen} onClose={toggleMenu}>
                     <div className="p-4 w-64 bg-white h-full shadow-lg">
@@ -54,14 +55,14 @@ const Header = () => {
                             <NavLink href="/" onClick={toggleMenu}>
                                 صفحه اصلی
                             </NavLink>
-                            <NavLink href="/martyrs" onClick={toggleMenu}>
-                                شعبه‌های ما
+                            <NavLink href="/todo" onClick={toggleMenu}>
+                                To-Do List
                             </NavLink>
                             <NavLink href="/health-centers" onClick={toggleMenu}>
                                 مراکز خدمات درمانی
                             </NavLink>
-                            <NavLink href="/todo" onClick={toggleMenu}>
-                                To-Do List
+                            <NavLink href="/martyrs" onClick={toggleMenu}>
+                                شعبه‌های ما
                             </NavLink>
                             <NavLink href="/faq" onClick={toggleMenu} >
                                 سوالات متداول

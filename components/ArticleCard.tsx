@@ -13,7 +13,7 @@ const ArticleCard = ({ article = {} as ArticleType }) => {
     return (
         <Card
             sx={{
-                maxWidth: 400,
+                maxWidth: 348,
                 minWidth: 300,
                 borderRadius: 2,
                 boxShadow: "0px 2px 4px rgba(18, 18, 18, 0.2)",
@@ -49,7 +49,6 @@ const ArticleCard = ({ article = {} as ArticleType }) => {
                     variant="h6"
                     component="h3"
                     sx={{
-                        fontWeight: "bold",
                         color: "#121212",
                         marginBottom: 1,
                     }}

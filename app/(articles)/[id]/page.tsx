@@ -7,14 +7,16 @@ import Link from "next/link";
 import { articles } from "@/lib/data";
 
 interface ArticlePageProps {
-    params: {
-        id: string;
-    };
+    params: Promise<{ id: string }>;
 }
 
-const ArticlePage = ({ params }: ArticlePageProps) => {
-    const article = articles.find((article) => article.id === parseInt(params.id));
+export default async function ArticlePage({ params }: ArticlePageProps) {
+    const { id } = await params; // Await the params first
+    const articleId = Number(id);
 
+    if (isNaN(articleId)) return notFound();
+
+    const article = articles.find((article) => article.id === articleId);
     if (!article) {
         return notFound();
     }
@@ -83,5 +85,3 @@ const ArticlePage = ({ params }: ArticlePageProps) => {
         </div>
     );
 };
-
-export default ArticlePage;
